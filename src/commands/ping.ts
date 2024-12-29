@@ -17,7 +17,7 @@ export class PingCommand extends Command {
   public override async chatInputRun(
     interaction: Command.ChatInputCommandInteraction,
   ) {
-    const embed = embedHelper(interaction, "Ping:", "pinging...");
+    const embed = embedHelper("Ping:", "pinging...", interaction);
 
     const msg = await interaction.reply({
       embeds: [embed],
