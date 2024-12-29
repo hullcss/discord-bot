@@ -1,0 +1,27 @@
+{
+  "name": "hullcss_bot",
+  "module": "src/main.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/main.ts",
+    "build": "bun build ./src/main.ts --target=bun --outdir=./dist --minify",
+    "prod": "bun run ./dist/main.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@sapphire/framework": "^5.3.1",
+    "@sapphire/plugin-api": "^7.0.3",
+    "@sapphire/plugin-editable-commands": "^4.0.3",
+    "@sapphire/plugin-logger": "^4.0.2",
+    "@sapphire/plugin-subcommands": "^7.0.1",
+    "@sapphire/utilities": "^3.18.1",
+    "colorette": "^2.0.20",
+    "discord.js": "14.x"
+  },
+  "private": true
+}
