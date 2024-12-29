@@ -1,14 +1,45 @@
+import type { exec } from "./structs/execs";
 import type { Friend } from "./structs/friends";
 
 
-// HashMap for Exec User ID's
-export const execs: { [key: string]: number|undefined } = {
-    "President":            667396400576987147,  // rand
-    "Vice-President":       252001272146821120,  // alex
-    "Treasurer":            207122643223052288,  // erika
-    "Social Secretary":     433633207917871104,  // jack
-    "Webmaster":            609463800818827264,  // ash
-    "Social Media Manager": 638360627823247390   // bailey
+// HashMap for Exec Info
+export const execs: { [key: string]: exec|undefined } = {
+    president: {
+        role_name: "President",
+        name: "rand",
+        discord_id: 667396400576987147,
+        github_url: "todo"
+    },
+    vice_president: {
+        role_name: "Vice-President",
+        name: "alex",
+        discord_id: 252001272146821120,
+        github_url: "todo"
+    },
+    treasurer: {
+        role_name: "Treasurer",
+        name: "erika",
+        discord_id: 207122643223052288,
+        github_url: "todo"
+    },
+    social_secretary: {
+        role_name: "Social Secretary",
+        name: "jack",
+        discord_id: 433633207917871104,
+        github_url: "todo"
+    },
+    webmaster: {
+        role_name: "Webmaster",
+        name: "ash",
+        discord_id: 609463800818827264,
+        github_url: "todo"
+    },
+    social_media_manager: {
+        role_name: "Social Media Manager",
+        name: "bailey",
+        discord_id: 638360627823247390,
+        github_url: "todo"
+    }
 }
 
 // HashMap for important channel IDs
@@ -27,7 +58,7 @@ export const role_ids: { [key: string]: number } = {
 };
 
 export const important_links: { [key: string]: string } = {
-
+    rr: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
 }
 
 
