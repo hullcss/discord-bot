@@ -100,4 +100,10 @@ const main = async () => {
   }
 };
 
+client.on("messageCreate", async (message) => {
+  if (message.channel.id === "YOUR CHANNEL ID") {
+    console.log("message created");
+  }
+});
+
 void main();
