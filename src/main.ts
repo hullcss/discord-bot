@@ -1,29 +1,3 @@
-// import path from "node:path";
-// import { Logger } from "./commons/logger";
-// import { SapphireClient } from "@sapphire/framework";
-// import { GatewayIntentBits } from "discord.js";
-
-// Logger.info("Starting Bot...");
-
-// const client = new SapphireClient({
-//   intents: [
-//     GatewayIntentBits.MessageContent,
-//     GatewayIntentBits.Guilds,
-//     GatewayIntentBits.GuildMessages,
-//   ],
-//   loadMessageCommandListeners: false,
-// });
-
-// console.log(process.env.BOT_TOKEN);
-// client.login(process.env.BOT_TOKEN);
-
-// // Logger.info("Commands registered");
-// // Logger.info("Events loaded");
-
-// client.on("ready", () => {
-//   Logger.info("Bot is ready");
-// });
-
 import { LogLevel, SapphireClient } from "@sapphire/framework";
 import { GatewayIntentBits, Partials } from "discord.js";
 
