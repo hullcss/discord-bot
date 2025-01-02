@@ -1,8 +1,8 @@
 import { ButtonBuilder, EmbedBuilder } from "@discordjs/builders";
-import type { exec } from "./structs/execs";
-import type { Org } from "./structs/orgs";
+import type { exec } from "./commons/execs";
+import type { Org } from "./commons/orgs";
 import { embedHelper } from "./commons/embed";
-import type { ndurl } from "./structs/ndurl";
+import type { ndurl } from "./commons/ndurl";
 import { ButtonStyle, Embed } from "discord.js";
 
 
@@ -157,6 +157,7 @@ export const friends: { [key: string]: Org } = {
         name: "Support Networks",
         desc: "HUSU Support Networks",
         urls: {
+            // TODO: Fix This... (time to buy mailto.dev)
             // pto: {
             //     name: "Email",
             //     url: "mailto:supportnetworks.pto@hull.ac.uk"

@@ -1,7 +1,7 @@
 import { EmbedBuilder } from "@discordjs/builders";
 import { Command } from "@sapphire/framework";
 import { ChatInputCommandInteraction, Message } from "discord.js";
-import type { ndurl } from "../structs/ndurl";
+import type { ndurl } from "./ndurl";
 
 function embedHelper(
   nd: ndurl,
