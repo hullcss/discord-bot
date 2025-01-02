@@ -157,7 +157,7 @@ export const friends: { [key: string]: Org } = {
         name: "Support Networks",
         desc: "HUSU Support Networks",
         urls: {
-            // TODO: Fix This... (time to buy mailto.dev)
+            // TODO: Fix This... (time to write a redir service...)
             // pto: {
             //     name: "Email",
             //     url: "mailto:supportnetworks.pto@hull.ac.uk"
