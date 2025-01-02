@@ -20,7 +20,8 @@ export class FriendsCommand extends Subcommand {
       subcommands: [
         {
           name: "list",
-          chatInputRun: "chatInputList"
+          chatInputRun: "chatInputList",
+          default: true
         },
         {
           name: 'boardgames',
