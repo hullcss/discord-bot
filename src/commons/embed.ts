@@ -1,10 +1,10 @@
 import { EmbedBuilder } from "@discordjs/builders";
 import { Command } from "@sapphire/framework";
 import { ChatInputCommandInteraction, Message } from "discord.js";
+import type { ndurl } from "../structs/ndurl";
 
 function embedHelper(
-  title: string,
-  description: string,
+  nd: ndurl
   data?:
     | Message
     | Command.ChatInputCommandInteraction
@@ -13,8 +13,8 @@ function embedHelper(
 
   const embed = new EmbedBuilder()
     .setColor(0x000000)
-    .setTitle(title)
-    .setDescription(description)
+    .setTitle(nd.name)
+    .setDescription(nd.desc)
     .setTimestamp();
 
   if (data instanceof Message) {

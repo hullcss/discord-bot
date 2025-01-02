@@ -25,12 +25,14 @@ export class HasSenderAcceptedCOCListener extends Listener {
       msg += "Thanks for participating in the in the community, however to send messages, you ***must*** accept the Code of Conduct. ";
       msg += `This can be found in the [#roles](${url}) channel in our discord. \n`;
       msg += "If you need a hand, please feel free to message an exec. \n\n"
-      msg += `> \`${message.content}\``
+      msg += `> *Messge Content: \`${message.content}\`*`
 
 
       const e = embedHelper(
-        "Please Accept the Code of Conduct",
-        msg,
+        {
+          name: "Please Accept the Code of Conduct",
+          desc: msg
+        },
         message,
       );
 
