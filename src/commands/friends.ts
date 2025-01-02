@@ -2,7 +2,7 @@ import { Subcommand } from '@sapphire/plugin-subcommands';
 import { embedHelper } from '../commons/embed';
 import { isMessageInstance } from "@sapphire/discord.js-utilities";
 import { Command } from "@sapphire/framework";
-import { EmbedBuilder } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
 import { embed_blocks, friends } from "../config";
 
 // Society: 
@@ -12,7 +12,7 @@ import { embed_blocks, friends } from "../config";
 
 
 // Extend `Subcommand` instead of `Command`
-export class UserCommand extends Subcommand {
+export class FriendsCommand extends Subcommand {
   public constructor(context: Subcommand.LoaderContext, options: Subcommand.Options) {
     super(context, {
       ...options,
@@ -24,23 +24,23 @@ export class UserCommand extends Subcommand {
         },
         {
           name: 'boardgames',
-          chatInputRun: 'chatInputBoardgames'
+          chatInputRun: 'chatInputSoc'
         },
         {
           name: 'gaming',
-          chatInputRun: 'chatInputGaming'
+          chatInputRun: 'chatInputSoc'
         },
         {
           name: 'robsoc',
-          chatInputRun: 'chatInputRobSoc'
+          chatInputRun: 'chatInputSoc'
         },
         {
           name: 'freeside',
-          chatInputRun: 'chatInputFreeside'
+          chatInputRun: 'chatInputSoc'
         },
         {
-          name: 'support_network',
-          chatInputRun: 'chatInputSupport'
+          name: 'support_networks',
+          chatInputRun: 'chatInputSoc'
         }
       ]
     });
@@ -56,11 +56,12 @@ export class UserCommand extends Subcommand {
         .addSubcommand((command) => command.setName('gaming').setDescription('Info About Gaming Society'))
         .addSubcommand((command) => command.setName('robsoc').setDescription('Info About Robsoc'))
         .addSubcommand((command) => command.setName('freeside').setDescription('Info about Support Networks'))
-        .addSubcommand((command) =>command.setName('support_network').setDescription('Info about Support Networks'))
+        .addSubcommand((command) =>command.setName('support_networks').setDescription('Info about Support Networks'))
     );
   }
 
   public async chatInputList(interaction: Subcommand.ChatInputCommandInteraction) {
+    // console.log(interaction); 
 
     let e = embedHelper(
       {
@@ -69,6 +70,12 @@ export class UserCommand extends Subcommand {
       },
       interaction
     )
+
+    const msg = await interaction.reply({
+      embeds: [e],
+      // ephemeral: true,
+      fetchReply: true,
+    });
 
     Object.values(friends).forEach((friend) => {
 
@@ -83,62 +90,61 @@ export class UserCommand extends Subcommand {
       e.addFields({ name: friend.name, value: desc });
     });
 
-    await interaction.reply({ embeds: [e], ephemeral: true });
+    return interaction.editReply({
+        embeds: [e],
+    });
+    // await interaction.reply({ embeds: [e], ephemeral: true });
 
   }
 
-  public async chatInputRobSoc(interaction: Subcommand.ChatInputCommandInteraction) {
-    
-    // build initial embed
-    
-    // send embed
+  public async chatInputSoc(interaction: Subcommand.ChatInputCommandInteraction) {
 
-    const msg = await interaction.reply({
-      // embeds: [embed],
-      ephemeral: true,
-      fetchReply: true,
-    });
+    const soc = friends[interaction.options.getSubcommand()];
 
-    // do stuff...
+    if (!soc) {
+      const embed = embedHelper(
+        {
+          name: "Error",
+          desc: "No Soc with That Name :("
+        }
+      );
 
-    if (isMessageInstance(msg)) {
-      // Replace Placeholder Info
+      const msg = await interaction.reply({
+        embeds: [embed],
+        // ephemeral: true,
+        fetchReply: true,
+      });
+
+      return;
     }
 
-    // Cleanup
+    const embed = embedHelper(
+      {
+        name: soc.name,
+        desc: soc.desc
+      }, 
+      interaction
+    );
+
+    const row = new ActionRowBuilder<ButtonBuilder>();
+
+    if (soc.urls) {
+      Object.values(soc.urls).forEach((url) => {
+        row.addComponents(
+          new ButtonBuilder()
+            .setLabel(url.name)
+            .setStyle(ButtonStyle.Link)
+            .setURL(url.url ?? "")
+        );
+      });
+    }
+
+    const msg = await interaction.reply({
+      embeds: [embed],
+      components: [row],
+      // ephemeral: true,
+      fetchReply: true,
+    });
   }
 
-  public async chatInputFreeside(interaction: Subcommand.ChatInputCommandInteraction) {
-
-
-  }
-
-  public async chatInputSupport(interaction: Subcommand.ChatInputCommandInteraction) {
-
-
-  }
-
-  public async chatInputBoardgames(interaction: Subcommand.ChatInputCommandInteraction) {
-    const embed = new EmbedBuilder()
-      .setTitle('Boardgames Society')
-      .setDescription('Information about the Boardgames Society')
-      .addFields(
-        { name: 'Description', value: 'A society for board game enthusiasts.' },
-        { name: 'Links', value: '[Boardgames Society Website](https://example.com)' }
-      );
-
-    await interaction.reply({ embeds: [embed], ephemeral: true });
-  }
-
-  public async chatInputGaming(interaction: Subcommand.ChatInputCommandInteraction) {
-    const embed = new EmbedBuilder()
-      .setTitle('Gaming Society')
-      .setDescription('Information about the Gaming Society')
-      .addFields(
-        { name: 'Description', value: 'A society for video game enthusiasts.' },
-        { name: 'Links', value: '[Gaming Society Website](https://example.com)' }
-      );
-
-    await interaction.reply({ embeds: [embed], ephemeral: true });
-  }
 }

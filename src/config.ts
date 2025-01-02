@@ -94,11 +94,11 @@ export const friends: { [key: string]: Org } = {
         desc: "The Linux User Group at the University",
         urls: {
             discord: {
-                name: "Freeside Discord Server",
+                name: "Discord Server",
                 url: "https://discord.gg/WugkvVjNZD"
             },
             website: {
-                name: "Freeside Website",
+                name: "Website",
                 url: "https://freeside.co.uk"
             }
         }
@@ -122,15 +122,15 @@ export const friends: { [key: string]: Org } = {
         desc: "Hull University Boardgames Society",
         urls: {
             discord: {
-                name: "BoardSoc Discord",
+                name: "Discord",
                 url: "https://discord.gg/c9cCae8xmW"
             },
             instagram: {
-                name: "BoardSoc Instagram",
+                name: "Instagram",
                 url: "https://www.instagram.com/huboardgames/"
             },
             husu: {
-                name: "BoardSocHUSU Page",
+                name: "HUSU Page",
                 url: "https://hulluniunion.com/activities/view/Board-Games-Society"
             }
         }
@@ -140,15 +140,15 @@ export const friends: { [key: string]: Org } = {
         desc: "Hull University Gaming Society",
         urls: {
             discord: {
-                name: "GameSoc Discord",
+                name: "Discord",
                 url: "https://discord.gg/Z4zfMYrn2J"
             },
             instagram: {
-                name: "GameSoc Instagram",
+                name: "Instagram",
                 url: "https://www.instagram.com/hull_university_gaming/"
             },
             husu: {
-                name: "GameSoc HUSU Page",
+                name: "HUSU Page",
                 url: "https://hulluniunion.com/activities/view/gaming-society"
             }
         }
@@ -157,10 +157,10 @@ export const friends: { [key: string]: Org } = {
         name: "Support Networks",
         desc: "HUSU Support Networks",
         urls: {
-            pto: {
-                name: "Email",
-                url: "mailto:supportnetworks.pto@hull.ac.uk"
-            },
+            // pto: {
+            //     name: "Email",
+            //     url: "mailto:supportnetworks.pto@hull.ac.uk"
+            // },
             husu: {
                 name: "HUSU Page",
                 url: "https://hulluniunion.com/join-in/support-networks"
