@@ -42,6 +42,26 @@ export class EmbedsCommand extends Subcommand {
 
   public async chatInputRun(interaction: Subcommand.ChatInputCommandInteraction) {
 
-    // TODO: do this
+    // interaction.options.getSubcommand()
+    const subcommand = interaction.options.getSubcommand();
+
+    switch (subcommand) {
+        case 'paid_member':
+            // TODO
+            // - write embed
+            // - add buttons
+            // - build form
+            // - handle form
+            break;
+        case 'code_of_conduct':
+            // TODO
+            // - write embed
+            // - add buttons
+            // - handle buttons
+            break;
+        default:
+            await interaction.reply({ content: 'Unknown subcommand', ephemeral: true });
+            break;
+    }
   }
 }

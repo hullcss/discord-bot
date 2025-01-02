@@ -18,6 +18,6 @@ export class LinksCommand extends Command {
   public override async chatInputRun(
     interaction: Command.ChatInputCommandInteraction,
   ) {
-    // TODO
+    // TODO: write embed...
   }
 }
