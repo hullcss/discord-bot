@@ -24,40 +24,49 @@ export class FriendsCommand extends Subcommand {
           default: true
         },
         {
-          name: 'boardgames',
-          chatInputRun: 'chatInputSoc'
-        },
-        {
-          name: 'gaming',
-          chatInputRun: 'chatInputSoc'
-        },
-        {
-          name: 'robsoc',
-          chatInputRun: 'chatInputSoc'
-        },
-        {
-          name: 'freeside',
-          chatInputRun: 'chatInputSoc'
-        },
-        {
-          name: 'support_networks',
-          chatInputRun: 'chatInputSoc'
+          name: "info",
+          type: "group",
+          entries: [
+            {
+              name: 'boardgames',
+              chatInputRun: 'chatInputSoc'
+            },
+            {
+              name: 'gaming',
+              chatInputRun: 'chatInputSoc'
+            },
+            {
+              name: 'robsoc',
+              chatInputRun: 'chatInputSoc'
+            },
+            {
+              name: 'freeside',
+              chatInputRun: 'chatInputSoc'
+            },
+            {
+              name: 'support_networks',
+              chatInputRun: 'chatInputSoc'
+            }
+          ]
         }
       ]
     });
   }
 
   registerApplicationCommands(registry: Subcommand.Registry) {
-    registry.registerChatInputCommand((builder) =>
-      builder
-        .setName('friends')
-        .setDescription('Friends of HullCSS')
-        .addSubcommand((command) => command.setName('list').setDescription('List Organisations that we are friends with :3'))
+    registry.registerChatInputCommand((builder) => builder
+      .setName('friends')
+      .setDescription('Friends of HullCSS')
+      .addSubcommand((command) => command.setName('list').setDescription('List Organisations that we are friends with :3'))
+      .addSubcommandGroup((group) => group
+      .setName('info')
+      .setDescription('More Info on Friends')
         .addSubcommand((command) => command.setName('boardgames').setDescription('Info About Boardgames Society'))
         .addSubcommand((command) => command.setName('gaming').setDescription('Info About Gaming Society'))
         .addSubcommand((command) => command.setName('robsoc').setDescription('Info About Robsoc'))
         .addSubcommand((command) => command.setName('freeside').setDescription('Info about Support Networks'))
         .addSubcommand((command) =>command.setName('support_networks').setDescription('Info about Support Networks'))
+      ) 
     );
   }
 
