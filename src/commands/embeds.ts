@@ -12,11 +12,11 @@ import { embed_blocks, friends } from "../config";
 
 
 // Extend `Subcommand` instead of `Command`
-export class SubCommandTestCommand extends Subcommand {
+export class EmbedsCommand extends Subcommand {
   public constructor(context: Subcommand.LoaderContext, options: Subcommand.Options) {
     super(context, {
       ...options,
-      name: 'sctest',
+      name: 'embeds',
       subcommands: [
         {
           name: "paid_member",
@@ -33,8 +33,8 @@ export class SubCommandTestCommand extends Subcommand {
   registerApplicationCommands(registry: Subcommand.Registry) {
     registry.registerChatInputCommand((builder) =>
       builder
-        .setName('sctest')
-        .setDescription('Friends of HullCSS')
+        .setName('embeds')
+        .setDescription('Embed Admin Command')
         .addSubcommand((command) => command.setName('paid_member').setDescription('Paid Member embed'))
         .addSubcommand((command) => command.setName('code_of_conduct').setDescription('Code of Conduct Embed'))
     );
