@@ -1,6 +1,6 @@
 import { ButtonBuilder, EmbedBuilder } from "@discordjs/builders";
 import type { exec } from "./structs/execs";
-import type { Friend } from "./structs/friends";
+import type { Org } from "./structs/orgs";
 import { embedHelper } from "./commons/embed";
 import type { ndurl } from "./structs/ndurl";
 import { ButtonStyle, Embed } from "discord.js";
@@ -48,6 +48,7 @@ export const execs: { [key: string]: exec|undefined } = {
 
 // HashMap for important channel IDs
 export const channel_ids: { [key: string]: number } = {
+    general: 427875246801027072,
     roles: 427873938333499404,
     rules: 973982410612027503,
     member_requests: 768465164898271244,
@@ -87,19 +88,92 @@ export const important_links: { [key: string]: ndurl } = {
 }
 
 // Friends
-export const friends: { [key: string]: ndurl } = {
+export const friends: { [key: string]: Org } = {
     freeside: {
         name: "Freeside",
         desc: "The Linux User Group at the University",
-        url: "https://discord.gg/WugkvVjNZD"
+        urls: {
+            discord: {
+                name: "Freeside Discord Server",
+                url: "https://discord.gg/WugkvVjNZD"
+            },
+            website: {
+                name: "Freeside Website",
+                url: "https://freeside.co.uk"
+            }
+        }
     },
     robsoc: {
         name: "RobSoc",
         desc: "Hull Universities Robotics Society",
+        urls: {
+            instagram: {
+                name: "RobSoc Instagram",
+                url: "https://www.instagram.com/hull_rs/"
+            },
+            husu: {
+                name: "RobSoc HUSU Page",
+                url: "https://hulluniunion.com/activities/view/Robotics"
+            }
+        }
+    },
+    boardgames: {
+        name: "Boardgames",
+        desc: "Hull University Boardgames Society",
+        urls: {
+            discord: {
+                name: "BoardSoc Discord",
+                url: "https://discord.gg/c9cCae8xmW"
+            },
+            instagram: {
+                name: "BoardSoc Instagram",
+                url: "https://www.instagram.com/huboardgames/"
+            },
+            husu: {
+                name: "BoardSocHUSU Page",
+                url: "https://hulluniunion.com/activities/view/Board-Games-Society"
+            }
+        }
+    },
+    gaming: {
+        name: "Gaming",
+        desc: "Hull University Gaming Society",
+        urls: {
+            discord: {
+                name: "GameSoc Discord",
+                url: "https://discord.gg/Z4zfMYrn2J"
+            },
+            instagram: {
+                name: "GameSoc Instagram",
+                url: "https://www.instagram.com/hull_university_gaming/"
+            },
+            husu: {
+                name: "GameSoc HUSU Page",
+                url: "https://hulluniunion.com/activities/view/gaming-society"
+            }
+        }
+    },
+    support_networks: {
+        name: "Support Networks",
+        desc: "HUSU Support Networks",
+        urls: {
+            pto: {
+                name: "Email",
+                url: "mailto:supportnetworks.pto@hull.ac.uk"
+            },
+            husu: {
+                name: "HUSU Page",
+                url: "https://hulluniunion.com/join-in/support-networks"
+            }
+        }
     }
 }
 
 export const embed_blocks: { [key: string]: ndurl } = {
+    ping: {
+        name: "Ping",
+        desc: "Pinging..."
+    },
     pmr_embed: {
         name: "Paid Member Request:", 
         desc: `Press the button below and fill in the form to request the <@paidmember> role`

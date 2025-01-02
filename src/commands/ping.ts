@@ -2,6 +2,7 @@ import { isMessageInstance } from "@sapphire/discord.js-utilities";
 import { Command } from "@sapphire/framework";
 import { EmbedBuilder } from "discord.js";
 import { embedHelper } from "../commons/embed";
+import { embed_blocks } from "../config";
 
 export class PingCommand extends Command {
   public constructor(context: Command.LoaderContext, options: Command.Options) {
@@ -17,7 +18,13 @@ export class PingCommand extends Command {
   public override async chatInputRun(
     interaction: Command.ChatInputCommandInteraction,
   ) {
-    const embed = embedHelper("Ping:", "pinging...", interaction);
+    const embed = embedHelper(
+      {
+        name: "Ping",
+        desc: "Pinging..."
+      }, 
+      interaction
+    );
 
     const msg = await interaction.reply({
       embeds: [embed],

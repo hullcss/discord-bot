@@ -1,6 +1,6 @@
 
 export interface ndurl {
     name: string,
-    desc: string,
+    desc?: string,
     url?: string,
 }
