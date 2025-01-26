@@ -18,33 +18,32 @@ export class ResetCommand extends Command {
   public override async chatInputRun(
     interaction: Command.ChatInputCommandInteraction,
   ) {
-    // TODO
+    // TODO:
     // - for every user who has paid member role, take that role off them
     // - for every user who has course rep role, take that role off them
-
+    // NOTE:
+    // - this will not be completed til near the end of the year
+    // - its not needed yet, and id rather test it when we actually need to nuke roles.
+    //
+    //
     // TODO: this code broke when testing, need to check over it...
-//     const guild = interaction.guild;
-//     if (!guild) return;
-
-//     const paidMemberRole = guild.roles.cache.find(role => role.name === "Paid Member");
-//     const courseRepRole = guild.roles.cache.find(role => role.name === "Course Rep");
-
-//     if (!paidMemberRole || !courseRepRole) {
-//       await interaction.reply("Roles not found.");
-//       return;
-//     }
-
-//     const members = await guild.members.fetch();
-
-//     for (const member of members.values()) {
-//       if (member.roles.cache.has(paidMemberRole.id)) {
-//         await member.roles.remove(paidMemberRole);
-//       }
-//       if (member.roles.cache.has(courseRepRole.id)) {
-//         await member.roles.remove(courseRepRole);
-//       }
-//     }
-
-//     await interaction.reply("Roles have been reset.");
+    //     const guild = interaction.guild;
+    //     if (!guild) return;
+    //     const paidMemberRole = guild.roles.cache.find(role => role.name === "Paid Member");
+    //     const courseRepRole = guild.roles.cache.find(role => role.name === "Course Rep");
+    //     if (!paidMemberRole || !courseRepRole) {
+    //       await interaction.reply("Roles not found.");
+    //       return;
+    //     }
+    //     const members = await guild.members.fetch();
+    //     for (const member of members.values()) {
+    //       if (member.roles.cache.has(paidMemberRole.id)) {
+    //         await member.roles.remove(paidMemberRole);
+    //       }
+    //       if (member.roles.cache.has(courseRepRole.id)) {
+    //         await member.roles.remove(courseRepRole);
+    //       }
+    //     }
+    //     await interaction.reply("Roles have been reset.");
   }
 }

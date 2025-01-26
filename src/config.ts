@@ -208,7 +208,6 @@ export function paid_member_req(): EmbedBuilder {
     });
 
     let benefits: string = "Come to every event\n Vote in AGMs and EGMs\n Access a special area, just for paid members\n And support the society you are apart of!\n";
-    
     let disclaimer: string = "This is a manual process, executive members need to verify that you have paid your membership and then manually give you the role. There may be no notification when you recieve your role, if you have any questions feel free to reach out to an exec!"
     let paying: string = "To pay for a membership, click on the [`buy membership`]() button below, then hit the green button and fill in your student info. An exec will then review your request and give you the role! Membership costs £5"
 
