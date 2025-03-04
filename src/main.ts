@@ -15,7 +15,7 @@ import "@sapphire/plugin-subcommands/register";
 import * as colorette from "colorette";
 import { join } from "path";
 import { inspect } from "util";
-import { paid_member_req, welcome_message } from "./config";
+import { paid_member_embed, welcome_message } from "./config";
 
 export const rootDir = join(__dirname, "..", "..");
 export const srcDir = join(rootDir, "src");
@@ -28,7 +28,7 @@ export const RandomLoadingMessage = [
   "Loading...",
 ];
 
-let e = paid_member_req();
+// let e = paid_member_embed();
 
 // Set default behavior to bulk overwrite
 ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(

@@ -200,29 +200,29 @@ export function welcome_message(user_id: string): string {
     return msg;
 }
 
-export function paid_member_req(): EmbedBuilder {
+export function paid_member_embed(): EmbedBuilder {
     
-    const e: EmbedBuilder = embedHelper({
+    const embed: EmbedBuilder = embedHelper({
         name: "Paid Member Request:", 
         desc: `Press the button below and fill in the form to request the <@paidmember> role`
     });
 
-    let benefits: string = "Come to every event\n Vote in AGMs and EGMs\n Access a special area, just for paid members\n And support the society you are apart of!\n";
+    let benefits: string = "- Come to every event \n- Vote in AGMs and EGMs \n- Access a special area, just for paid members \n- And support the society you are apart of!\n";
     let disclaimer: string = "This is a manual process, executive members need to verify that you have paid your membership and then manually give you the role. There may be no notification when you recieve your role, if you have any questions feel free to reach out to an exec!"
     let paying: string = "To pay for a membership, click on the [`buy membership`]() button below, then hit the green button and fill in your student info. An exec will then review your request and give you the role! Membership costs £5"
 
-    e.addFields(
+    embed.addFields(
         { name: "Benefits?", value: benefits },
         { name: "Disclaimer!", value: disclaimer },
         { name: "Pay for a membership", value: paying }
     );
 
-    return e;
+    return embed;
 }
 
 export function welcome_dm(user_id: string): EmbedBuilder {
 
-    const e: EmbedBuilder = embedHelper({
+    const embed: EmbedBuilder = embedHelper({
         name: "lorem",
         desc: "ipsum"
     });
@@ -230,8 +230,92 @@ export function welcome_dm(user_id: string): EmbedBuilder {
     
     const buying_membership: string = "";
 
-    return e;
+    return embed;
 }
+
+export function links_embed(): EmbedBuilder {
+    const embed: EmbedBuilder = embedHelper({
+        name: "Useful Links!",
+        desc: "Below are a some useful links to communities and resources."
+    });
+
+    let list_of_links: string = "Heres a list of free resources to help you in your studies: \n";
+
+    for (const [name, data] of Object.entries(important_links)) {
+      // embed.addFields({ name: `[${data.name}](${data.url})`, value: `${data.desc ? data.desc + "\n" : "" }${data.url}` });
+      list_of_links += `- [${data.name}](${data.url})${data.desc ? ": " + data.desc : "" } \n`
+    }
+
+    embed.addFields({
+      name: "Resources and Tools",
+      value: list_of_links
+    })
+
+    let our_links: string = "Heres a list of links for the society: \n";
+
+    our_links += "- [website](https://hullcss.org/): Our Website and Blog \n";
+    our_links += "- [instagram](https://links.hullcss.org/instagram): Our instagram page \n";
+    our_links += "- [github](https://links.hullcss.org/github): Our GitHub Org \n";
+    our_links += "- [husu](https://links.hullcss.org/husu): Our HUSU Page \n";
+    our_links += "- [linktree](https://links.hullcss.org/): Our Linktree \n";
+
+    embed.addFields({
+      name: "Society Links",
+      value: our_links,
+    })
+
+    let list_of_friends: string = "Here are a list of societies we think youll like. for more info, run `/friends info <name>`: \n";
+
+    for (const [name, data] of Object.entries(friends)) {
+      list_of_friends += `- ${data.urls && data.urls["discord"] ? `[${data.name}](${data.urls["discord"].url})` : data.name}: ${data.desc} \n`;
+    }
+
+    embed.addFields({
+      name: "Other Cool Soceiteies",
+      value: list_of_friends
+    })
+
+    embed.addFields({
+      name: "Think something is missing?",
+      value: "Ping an <@&972252611120103445> with your suggestion or [make a PR on github](https://links.hullcss.org/github)"
+    })
+
+    return embed;
+}
+
+export function friends_list_embed(): EmbedBuilder {
+    let embed = embedHelper({
+        name: "List of Partered Orgs:",
+        desc: "Here are a list of organisaations who we share close links with. To get more info on them, just run `/friends info <name>`"
+        },
+    )
+
+    Object.values(friends).forEach((friend) => {
+
+        let desc: string = friend.desc + "\n";
+
+        if (friend.urls) {
+        Object.values(friend.urls).forEach((url) => {
+            desc += `- [${url.name}](${url.url ?? ""})\n`
+        })
+        }
+
+        embed.addFields({ name: friend.name, value: desc });
+    });
+
+    return embed
+}
+
+export function code_of_conduct_embed(): EmbedBuilder {
+    let embed = embedHelper({
+        name: "Code of Conduct",
+        desc: "Lorem Ipsum"
+    });
+
+    return embed;
+}
+
+// export function lin
 
 
 // Pulling bot token out of env

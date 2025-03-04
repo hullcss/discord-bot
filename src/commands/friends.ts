@@ -3,12 +3,9 @@ import { embedHelper } from '../commons/embed';
 import { isMessageInstance } from "@sapphire/discord.js-utilities";
 import { Command } from "@sapphire/framework";
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
-import { embed_blocks, friends } from "../config";
+import { embed_blocks, friends, friends_list_embed } from "../config";
 
-// Society: 
-// - name
-// - desc
-// - links
+// TODO: auto register sub commands based off of configured values. 
 
 
 // Extend `Subcommand` instead of `Command`
@@ -71,37 +68,9 @@ export class FriendsCommand extends Subcommand {
   }
 
   public async chatInputList(interaction: Subcommand.ChatInputCommandInteraction) {
-    // console.log(interaction); 
-
-    let e = embedHelper(
-      {
-        name: "List of Partered Orgs:",
-        desc: "Here are a list of organisaations who we share close links with. To get more info on them, just run `/friends <name>`"
-      },
-      interaction
-    )
-
-    const msg = await interaction.reply({
-      embeds: [e],
-      // ephemeral: true,
-      fetchReply: true,
-    });
-
-    Object.values(friends).forEach((friend) => {
-
-      let desc: string = friend.desc + "\n";
-
-      if (friend.urls) {
-        Object.values(friend.urls).forEach((url) => {
-          desc += `- [${url.name}](${url.url ?? ""})\n`
-        })
-      }
-
-      e.addFields({ name: friend.name, value: desc });
-    });
-
-    return interaction.editReply({
-        embeds: [e],
+    return interaction.reply({
+        embeds: [friends_list_embed()],
+        // ephemeral: true,
     });
     // await interaction.reply({ embeds: [e], ephemeral: true });
 

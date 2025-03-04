@@ -12,7 +12,7 @@ function embedHelper(
 ): EmbedBuilder {
 
   const embed = new EmbedBuilder()
-    .setColor(0x000000)
+    .setColor(0x98c379)
     .setTitle(nd.name)
     .setDescription(nd.desc ?? "")
     .setTimestamp();

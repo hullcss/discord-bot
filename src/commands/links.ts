@@ -2,7 +2,7 @@ import { isMessageInstance } from "@sapphire/discord.js-utilities";
 import { Command } from "@sapphire/framework";
 import { EmbedBuilder } from "discord.js";
 import { embedHelper } from "../commons/embed";
-import { embed_blocks } from "../config";
+import { embed_blocks, friends, important_links, links_embed } from "../config";
 
 export class LinksCommand extends Command {
   public constructor(context: Command.LoaderContext, options: Command.Options) {
@@ -18,6 +18,6 @@ export class LinksCommand extends Command {
   public override async chatInputRun(
     interaction: Command.ChatInputCommandInteraction,
   ) {
-    // TODO: write embed...
+    await interaction.reply({ embeds: [links_embed()], ephemeral: true});
   }
 }
