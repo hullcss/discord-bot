@@ -16,10 +16,15 @@ bun run src/main.ts
 
 ## TODO:
 
+- [ ] CICD:
+  - [ ] get bun build working
+  - [ ] package bot
+  - [ ] publish package to GHCR
+  - [ ] host on infra
 - [ ] Reset:  \* this will be done closer to hand-over
   - [ ] remove every occurance of course rep role
   - [ ] remove every occurance of paid member role
-- [x] Embeds: 
+- [ ] Embeds: 
   - [x] Move all embeds into one command with subcommands
   - [ ] add a button to the paid member post that opens up a form
   - [ ] add button to coc embed to give people the paid member role
